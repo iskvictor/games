@@ -19,4 +19,4 @@ class Control():
                 elif i.key == K_UP:
                     self.direction = "UP"
                 elif i.key == K_DOWN:
-                    self.direction == "DOWN"
+                    self.direction = "DOWN"

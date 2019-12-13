@@ -1,18 +1,20 @@
 import pygame
 from control import Control
-
+from snake import Snake
 pygame.init()
 window = pygame.display.set_mode((441,441))
 pygame.display.set_caption('Змейка')
 control = Control()
-#Координаты головы змеи
-head = [45,45]
+snake = Snake()
 clock = pygame.time.Clock()
-FPS = 2
+var_speed = 0
 while control.play:
     control.control()
     window.fill(pygame.Color('BLACK'))
-    pygame.draw.rect(window, pygame.Color('GREEN'), pygame.Rect(head[0], head[1], 10, 10))
-    head[0] += 25
+    snake.draw_snake(window)
+    print(var_speed)
+    if var_speed % 10 == 0:
+        snake.move_snake(control)
+    var_speed += 1
     pygame.display.flip()
-    clock.tick(FPS)
+    clock.tick(40)
