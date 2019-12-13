@@ -13,8 +13,9 @@ while control.play:
     window.fill(pygame.Color('BLACK'))
     snake.draw_snake(window)
     print(var_speed)
-    if var_speed % 10 == 0:
+    if var_speed % 10 == 0 and control.pause:
         snake.move_snake(control)
+        snake.animation()
     var_speed += 1
     pygame.display.flip()
     clock.tick(40)
