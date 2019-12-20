@@ -13,7 +13,7 @@ class Control():
                 self.play = False
             elif i.type == KEYDOWN:
                 if i.key == K_RIGHT and self.direction != "LEFT":
-                    self.direction != "RIGTH"
+                    self.direction = "RIGTH"
                 elif i.key == K_LEFT and self.direction != "RIGHT":
                     self.direction = "LEFT"
                 elif i.key == K_UP and self.direction != "DOWN":
