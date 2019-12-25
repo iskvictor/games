@@ -49,6 +49,12 @@ class Gui():
             ]
 
         self.gui_image = pygame.image.load("snake/images/gui.png")
+        self.image_win = pygame.image.load("snake/images/win.png")
+        self.image_lose = pygame.image.load("snake/images/lose.png")
+        self.barrier = []
+        self.field = []
+        self.indicator = [[12, 12]]
+        self.game = "GAME"
 
     def create_file(self):
         screen = pygame.Surface((441, 441), pygame.SRCALPHA, 32)
@@ -68,3 +74,36 @@ class Gui():
     def draw_level(self, window):
         "отрисовывает уровень игры"
         window.blit(self.gui_image, (0, 0))
+
+    def fill_field(self):
+        x = 1
+        y = 1
+        for i in self.level:
+            if i == 0:
+                self.barrier.append([x, y])
+            elif i == 1 and y != 12:
+                self.field.append([x, y])
+            x += 11
+            if x == 441:
+                y += 11
+                x = 1
+
+    def get_indicator(self):
+        self.indicator.append([self.indicator[-1][0] + 11, 12])
+
+    def draw_indicator(self, window):
+        for i in self.indicator:
+            pygame.draw.rect(window, pygame.Color('GREEN'),
+                             pygame.Rect(i[0], i[1], 10, 10))
+
+    def draw_lose(self, window):
+        window.blit(self.image_lose, (23, 100))
+
+    def draw_win(self, window):
+        window.blit(self.image_win, (23, 100))
+
+    def check_win_lose(self):
+        if len(self.indicator) == 0:
+            self.game = "LOSE"
+        elif len(self.indicator) == 37:
+            self.game = "WIN"

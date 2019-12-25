@@ -1,6 +1,7 @@
 import pygame
 from pygame.locals import *
 
+
 class Control():
     def __init__(self):
         self.play = True
@@ -20,10 +21,10 @@ class Control():
                     self.direction = "UP"
                 elif i.key == K_DOWN and self.direction != "UP":
                     self.direction = "DOWN"
-                elif i.key ==K_ESCAPE:
+                elif i.key == K_ESCAPE:
                     self.play = False
                 elif i.key == K_SPACE:
-                    if self.pause == False:
+                    if self.pause is False:
                         self.pause = True
-                    elif self.pause == True:
+                    elif self.pause is True:
                         self.pause = False

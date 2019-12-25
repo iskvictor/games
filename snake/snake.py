@@ -34,3 +34,14 @@ class Snake():
             self.head[1] = 419
         elif self.head[1] == 419:
             self.head[1] = 34
+
+    def eat(self, food, gui):
+        if self.head == food.food_position:
+            self.body.append(food.food_position)
+            food.get_food_position(gui)
+            gui.get_indicator()
+
+    def cheak_barrier(self, gui):
+        if self.head in gui.barrier or self.head in self.body[1:]:
+            self.body.pop()
+            gui.indicator.pop()
